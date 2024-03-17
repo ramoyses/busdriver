@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Net.NetworkInformation;
 
 public enum Suit
@@ -101,7 +102,7 @@ class Program
     static void Main(string[] args)
     {
         List<int> distribution = new List<int>();
-        for (int i = 0; i < 1e5; i++)
+        for (int i = 0; i < 0.5e6; i++)
         {
             distribution.Add(RunGame());
             //float p = distribution.Where(x => x.Equals(40)).Count()/distribution.Count();
@@ -109,7 +110,9 @@ class Program
             int n = distribution.Count();
             Console.WriteLine("e {0} - n {1} - p40 {2:N4} - pm {3:N4}", e, n, (double) 100*e/ n, 
                 (double)distribution.Average());
-    }
+
+        }
+        File.WriteAllLines("out.txt", distribution.Select(x => string.Join(";", x)));
     }
 
     static int RunGame()
