@@ -101,14 +101,15 @@ class Program
     static void Main(string[] args)
     {
         List<int> distribution = new List<int>();
-        for (int i = 0; i < 1e6; i++)
+        for (int i = 0; i < 1e5; i++)
         {
             distribution.Add(RunGame());
             //float p = distribution.Where(x => x.Equals(40)).Count()/distribution.Count();
             int e = distribution.Where(x => x.Equals(40)).Count();
             int n = distribution.Count();
-            Console.WriteLine("e {0} - n {1} - p {2:N4}", e, n, (double) 100*e/ n);
-        }
+            Console.WriteLine("e {0} - n {1} - p40 {2:N4} - pm {3:N4}", e, n, (double) 100*e/ n, 
+                (double)distribution.Average());
+    }
     }
 
     static int RunGame()
