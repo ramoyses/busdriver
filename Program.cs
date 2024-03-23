@@ -120,13 +120,16 @@ class Program
         Deck deck = new Deck();
         int points=0;
         deck.Shuffle();
-
+        // Game initiates with 6 cards being dealt
         List<Card> hand = deck.Deal(6);
         //Console.WriteLine("Initial Hand:");
         //PrintCards(hand);
+
+        // If there is J or above, new cards are dealt, the higher the card, the more new cards needs to be dealt
         int new_cards = DealMoreCards(hand);
         points += new_cards;
         while (new_cards > 0){
+            // Repeat until no more J or above cards have been dealt.
             //Console.WriteLine("\nFigure! Dealing an extra {0} cards.", new_cards);
             List<Card> extraCards = deck.Deal(new_cards);
             //Console.WriteLine("\nExtra Cards:");
